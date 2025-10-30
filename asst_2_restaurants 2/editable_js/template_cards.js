@@ -24,7 +24,7 @@ function showCards(data) {
 
   const cardHTML = data
     .map(
-       /*html*/ 
+    
       (restaurant) => `
                 <div class="restaurant-card">
                     <h3>${restaurant.name}</h3>
@@ -39,7 +39,7 @@ function showCards(data) {
             `
     )
     .join("");
-     /*html*/ 
+   
   return `
                 <h2 class="view-title">🃏 Card View</h2>
                 <p class="view-description">Browse restaurants as individual cards - perfect for comparing options</p>

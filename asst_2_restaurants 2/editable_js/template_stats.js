@@ -76,7 +76,7 @@ const category_html = sorted_categories
     `)
     .join("");
 
-const monthly_counts = {}; // { "YYYY-MM": { total, compliant } }
+const monthly_counts = {};
 
 data.forEach(item => {
   if (!item.inspectionDate) return;

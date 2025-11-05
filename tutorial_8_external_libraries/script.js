@@ -55,17 +55,27 @@ function createMyChart() {
         // TODO: Count restaurants by cuisine type
         // Hint: restaurant.cuisine is the field you want
         // Hint: cuisineCounts[cuisine] = (cuisineCounts[cuisine] || 0) + 1;
+        const cuisine = restaurant.cuisine || "Unknown";
+
+        if (cuisineCounts[cuisine]) {
+            cuisineCounts[cuisine] = cuisineCounts[cuisine] +1;
+        } else {
+            cuisineCounts[cuisine] = 1;
+        }
     });
+
     
     // Step 3: Transform counts into Chart.js format using array methods
     // const chartLabels = /* TODO: Get the cuisine types (keys) */;
     // const chartData = /* TODO: Get the counts (values) */;
-    
+    const chartLabels = Object.keys(cuisineCounts);
+    const chartData = Object.values(cuisineCounts);
+
     console.log('Chart data prepared:', { labels: chartLabels, data: chartData });
     
     try {
         // Step 4: Get canvas and clear existing chart (provided)
-        const canvas = document.querySelector('#restaurant-chart');
+        const canvas = document.querySelector('#rating-chart');
         const ctx = canvas.getContext('2d');
         
         if (myChart) {
@@ -75,14 +85,14 @@ function createMyChart() {
         
         // Step 5: Create the Chart.js chart (you complete the config)
         // options for charts: https://www.chartjs.org/docs/latest/charts/
-        myChart = new Chart(ctx, {
+        myChart = new Chart(canvas, {
             /* TODO: What type of chart? 'bar', 'pie', 'line'? */
             type: 'bar',
             data: {
                 labels: chartLabels,
                 datasets: [{
                     /* TODO: adjust this name */
-                    label: 'name-of-series',
+                    label: 'Restaurants per cuisine',
                     data: chartData,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.6)',
@@ -100,7 +110,7 @@ function createMyChart() {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'title your chart please'
+                        text: 'Cuisine Distribution'
                     }
                 },
                 scales: {
@@ -108,7 +118,7 @@ function createMyChart() {
                         beginAtZero: true,
                         title: {
                             display: true,
-                            text: 'a real y axis has a label'
+                            text: 'Number of restaurants'
                         }
                     }
                 }
@@ -160,7 +170,11 @@ function createMyMap() {
             
             // TODO: Create popup content with restaurant information
             /* TODO: Build HTML string using restaurant.name, restaurant.cuisine, restaurant.rating */;
-            // const popupContent = ...;
+            const popupContent = `
+                <strong>${restaurant.name || 'Unknown'}</strong><br>
+                Cuisine: ${restaurant.cuisine || 'Unknown'}<br>
+                Rating: ${restaurant.rating || 'N/A'}
+            `;
             
             // TODO: Bind the popup to the marker and add to map
             marker.bindPopup(popupContent).addTo(myMap);
@@ -201,11 +215,19 @@ function animateMyCards() {
             // FROM state (starting point)
             {
                 /* TODO: Starting properties - opacity, scale, y position? */
+                opacity: 0,
+                scale: 0.8,
+                y: 20
             },
             // TO state (ending point)  
             {
                 /* TODO: Ending properties - make them fully visible and normal size */
-                duration: '0.2'
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                duration: 0.6,
+                stagger:0.1,
+                ease: "bounce.out"
                 // stagger: /* TODO: Delay between each card? 0.1 seconds? */,
                 // ease: /* TODO: What kind of easing? "bounce.out"? */
             }

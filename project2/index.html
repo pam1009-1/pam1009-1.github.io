@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>City Eats: Insights & Inspections</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>City Eats: Insights & Inspections</h1>
+      <p>Browse restaurants and find the restaurants you like!</p>
+    </header>
+
+    <nav class="view-selector" aria-label="View switcher">
+      <button class="view-button active" id="btn-cards" data-view="cards" aria-selected="true">Discover</button>
+      <button class="view-button" id="btn-table" data-view="table" aria-selected="false">Dataset</button>
+      <button class="view-button" id="btn-categories" data-view="categories" aria-selected="false">Groups</button>
+      <button class="view-button" id="btn-stats" data-view="stats" aria-selected="false">Trends</button>
+    </nav>
+
+    <main class="display-container">
+      <div id="data-display" aria-live="polite">
+        <div class="loading">Loading restaurant data...</div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="./script.js" defer></script>
+</body>
+</html>

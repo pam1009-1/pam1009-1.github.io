@@ -1,7 +1,6 @@
 /**
- * CARD VIEW — deduped + progressive disclosure
- * Keeps only the latest record per (name + address1)
- * Fields used: name, category, address1, city, inspectionDate, inspectionResults, owner
+ * CARD VIEW
+ * Col: name, category, address, city, inspectionDate, inspectionResults, owner
  */
 function showCards(data) {
   const safe = (v) => (v == null || v === "" || v === "------" ? "N/A" : v);
@@ -12,7 +11,7 @@ function showCards(data) {
     return typeof iso === "string" && iso.length >= 10 ? iso.slice(0, 10) : String(iso);
   };
 
-  // Badge from inspectionResults (case-insensitive, tolerant)
+  // Badge from inspectionResults
   const getBadge = (result) => {
     const raw = (result || "").toLowerCase().trim();
     if (!raw || raw === "------") return "To be inspected";
@@ -23,7 +22,7 @@ function showCards(data) {
     return "—";
   };
 
-  // --- DEDUPE: keep only latest record per (name + address1) --- //
+
   const byKey = {};
   data.forEach(r => {
     const name = r?.name || "";

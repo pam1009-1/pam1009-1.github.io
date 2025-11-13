@@ -41,7 +41,7 @@ function showCards(data) {
   let unique = Object.values(byKey);
 
   // ==========================================
-  // SORT newest first + limit count
+  // SORT newest 
   // ==========================================
   unique.sort((a, b) => {
     const d1 = a.inspectionDate ? new Date(a.inspectionDate) : 0;
@@ -54,7 +54,7 @@ function showCards(data) {
   unique = unique.slice(0, MAX_CARDS);
 
   // ==========================================
-  // CLEAN CITY OPTIONS (dedupe + title-case)
+  // CLEAN CITY OPTIONS 
   // ==========================================
   const cityOptions = Array.from(
     new Map(

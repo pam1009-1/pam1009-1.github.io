@@ -1,5 +1,5 @@
 /**
- * TABLE VIEW with pagination
+ * TABLE VIEW 
  * Columns: Name, Category, City, Last Inspection, Result, Address, Owner
  */
 function showTable(data, page = 1, perPage = 120) {
@@ -43,13 +43,12 @@ function showTable(data, page = 1, perPage = 120) {
 
   let unique = Object.values(byKey);
 
-  // Sort alphabetically by name
+  // Sort by name
   unique.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
 
   const totalCount = unique.length;
   const totalPages = Math.max(1, Math.ceil(totalCount / perPage));
 
-  // clamp page
   const currentPage = Math.min(Math.max(page, 1), totalPages);
   const startIndex = (currentPage - 1) * perPage;
   const pageItems = unique.slice(startIndex, startIndex + perPage);

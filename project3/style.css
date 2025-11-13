@@ -7,7 +7,7 @@
   --text:#e9edf1;
   --muted:#a6b0c3;
   --brand:#9eb7cc;     
-  ---brand-2:#6b7c8c;    
+  --brand-2:#6b7c8c;    
   --ok:#22c55e;
   --warn:#f59e0b;
   --radius: 14px;
@@ -247,4 +247,56 @@ header p{ margin:0 0 8px; color:var(--muted) }
 
 .section .form-row {
   margin-top: 32px;
+}
+
+.filters {
+  display: flex;
+  gap: 12px;
+  margin: 0 0 12px 0;
+}
+
+.filter-input,
+.filter-select {
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  background: var(--panel-2);
+  border: 1px solid rgba(255,255,255,.12);
+  color: var(--text);
+  font-size: .9rem;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  box-shadow: var(--ring);
+  outline: none;
+}
+
+.table-pagination {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.page-btn {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: color-mix(in oklab, var(--panel-2) 90%, transparent);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.page-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.page-btn:not(:disabled):hover {
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
 }
